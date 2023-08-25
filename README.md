@@ -1,3 +1,5 @@
-# Povprečna piksel slike
+# Povprečna barva slike
 
-Program vzame sliko podano v .jpg ali .png formatu, nam jo prikaže in pod njo ustvari povprečno piksel podane slike.
+## Kratek opis
+
+Program vzame sliko, nam jo prikaže in ob njej ustvari pokaže povprečno barvo podane slike, RGB vrednosti te barve in njen HEX zapis.
