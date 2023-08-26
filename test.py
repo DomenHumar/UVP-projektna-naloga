@@ -8,8 +8,8 @@ def dodaj_sliko(file):
               '<div class="cell color">' \
               '  <div class="box"></div>' \
               '  <ul>' \
-              '    <li class="rgb"></li>' \
-              '    <li class="hex"></li>' \
+              '    <li class="RGB"></li>' \
+              '    <li class="HEX"></li>' \
               '  </ul>' \
               '</div>' \
               '</div>'
@@ -18,11 +18,11 @@ def dodaj_sliko(file):
     RGB_str = 'rgb({}, {}, {})'.format(RGB[0], RGB[1], RGB[2])
     HEX_str = '#{0:02x}{1:02x}{2:02x}'.format(RGB[0], RGB[1], RGB[2])
     box = '<div class="box" style="background-color: {}"></div>'.format(RGB_str)
-    RGB_li = '<li class="rgb">{}</li>'.format(RGB_str)
-    HEX_li = '<li class="hex">{}</li>'.format(HEX_str)
+    RGB_li = '<li class="RGB">{}</li>'.format(RGB_str)
+    HEX_li = '<li class="HEX">{}</li>'.format(HEX_str)
     element = element.replace('<div class="box"></div>', box)
-    element = element.replace('<li class="rgb"></li>', RGB_li)
-    element = element.replace('<li class="hex"></li>', HEX_li)
+    element = element.replace('<li class="RGB"></li>', RGB_li)
+    element = element.replace('<li class="HEX"></li>', HEX_li)
     return element
 
 def najdi_povprecno_barvo(slika):
