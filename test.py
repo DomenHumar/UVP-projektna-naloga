@@ -18,3 +18,6 @@ def RGB_v_HEX(RGB):
     return '#{:02x}{:02x}{:02x}'.format(RGB[0], RGB[1], RGB[2])
 
 print(RGB_v_HEX(RGB_povprecne_piksle))
+
+slika_povprecja = Image.new("RGB", (340, 80), color = tuple(RGB_povprecne_piksle))
+slika_povprecja.show()
