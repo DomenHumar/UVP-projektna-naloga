@@ -2,14 +2,17 @@
 <html>
     <head>
         <title>Povprečna barva slike</title>
-        <link href="stil.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="stil.css"/>
     </head>
     <body>
         <h1>Povprečna barva slike</h1>
         <div id="target">
-            Odložite sliko tukaj (ali kliknite in jo izberite)
-            <input type="file" id="upload" multiple />
+            Naložite sliko tukaj
+        <form method="POST" action="/upload enctype="multipart/form-data">
+        <input id="file" name="file" type="file" />
+        <button>Upload</button>
+        </form>
         </div>
-        <div id="footer"></div>
+        <div id="images"></div>
     </body>
 </html>
