@@ -26,12 +26,12 @@ def dodaj_sliko(file):
     return element
 
 def najdi_povprecno_barvo(slika):
-    RGB_povprecne_piksle = []
+    RGB_povprecne_barve = []
     for k in range(3):
         sumacija = 0
         for j in range(slika.size[1]):
             for i in range(slika.size[0]):
                 sumacija += piksle[i,j][k]
             povprecje = round(sumacija / (slika.size[0] * slika.size[1]))
-        RGB_povprecne_piksle.append(povprecje)
-    return RGB_povprecne_piksle
+        RGB_povprecne_barve.append(povprecje)
+    return RGB_povprecne_barve

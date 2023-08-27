@@ -1,11 +1,15 @@
 import bottle
-from program import dodaj_sliko
 
 @bottle.get("/")
 def stran():
-    return bottle.template("stran.tpl")
+    return bottle.template("prva_stran.tpl")
 
 @bottle.post("/")
 def nalozi_sliko():
+    pass
 
-bottle.run(debug=True, reloader=True)
+@bottle.route('/static/<style>')
+def css(style):
+    return bottle.static_file(style, root='./static/')
+
+bottle.run(reloader=True)
