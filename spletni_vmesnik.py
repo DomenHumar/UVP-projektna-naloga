@@ -14,11 +14,12 @@ def napacen_input():
 @bottle.post('/je_slika')
 def nalozi_sliko():
     datoteka = bottle.request.files["slika"]
+    # Preverimo če je podana datoteka slika (tako da pogledamo njen format)
     ime, form = os.path.splitext(datoteka.filename)
     if form not in (".png", ".jpg", ".jpeg"):
         return bottle.redirect("/ni_slika")
     else:
-        # Pillow ne deluje na FileUpload, ki nam ga poda Bottle
+        # Pillow ne deluje na FileUpload, ki nam ga poda Bottle zato rabimo io
         slika = io.BytesIO()
         datoteka.save(slika)
         RGB = najdi_RGB(slika)
@@ -27,8 +28,7 @@ def nalozi_sliko():
         return bottle.template(
             "je_slika.tpl",
             RGB_str=RGB_str,
-            HEX_str=HEX_str,
-            slika=slika
+            HEX_str=HEX_str
         )
 
 @bottle.route('/static/<style>')
