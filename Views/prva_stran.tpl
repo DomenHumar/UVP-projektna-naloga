@@ -9,9 +9,8 @@
     <body>
         <h1>Povprečna barva slike</h1>
         <div id="target">
-        %import dodaj_sliko from program
-        <form method="POST" action"/dodaj_sliko/{{file}}>
-           <input type="file" id="file">
+        <form method="POST" action="/nalozi_sliko">
+           <input type="file" id="slika">
            <button id="select">Naložite sliko</button>
            <span class="name"></span>
         </form>
