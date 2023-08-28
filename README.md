@@ -10,7 +10,7 @@ Kliknemo na modri gumb da izberemo datoteko, ki jo želimo podati programu, nato
 
 ## Opomba
 
-Program vzame le slike podane v formatih:
+Program vzame le slike podane v naslednjih formatih:
 - .jpg
 - .png
 - .jpeg 
