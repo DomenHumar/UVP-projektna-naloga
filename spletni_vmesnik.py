@@ -15,10 +15,11 @@ def nalozi_sliko():
     ime, form = os.path.splitext(slika.filename)
     if form not in (".png", ".jpg", ".jpeg"):
         return bottle.redirect("/ni_slika")
-    
+    else:
+        dodaj_sliko(slika)
 
 @bottle.route('/static/<style>')
 def css(style):
     return bottle.static_file(style, root='./static/')
 
-bottle.run(reloader=True)
+bottle.run(reloader=True, debug=True)
