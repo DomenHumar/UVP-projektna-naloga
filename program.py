@@ -13,7 +13,7 @@ def dodaj_sliko(file):
               '  </ul>' \
               '</div>' \
               '</div>'
-    slika = PIL.Image.open(file)
+    slika = Image.open(file)
     RGB = najdi_povprecno_barvo(slika)
     RGB_str = 'rgb({}, {}, {})'.format(RGB[0], RGB[1], RGB[2])
     HEX_str = '#{0:02x}{1:02x}{2:02x}'.format(RGB[0], RGB[1], RGB[2])

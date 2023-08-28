@@ -9,8 +9,8 @@
     <body>
         <h1>Povprečna barva slike</h1>
         <div id="target">
-        <form method="POST" action="/nalozi_sliko">
-           <input type="file" id="slika">
+        <form method="POST" action="/nalozi_sliko" enctype="multipart/form-data">
+           <input type="file" name="slika">
            <button id="select">Naložite sliko</button>
            <span class="name"></span>
         </form>

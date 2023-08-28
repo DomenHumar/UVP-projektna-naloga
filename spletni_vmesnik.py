@@ -10,13 +10,14 @@ def stran():
 def napacen_input():
     return bottle.template("ni_slika.tpl")
 
-@bottle.post("/nalozi_sliko")
+@bottle.post('/nalozi_sliko')
 def nalozi_sliko():
-    ime, form = os.path.splitext(slika.filename)
+    datoteka = bottle.request.files["slika"]
+    ime, form = os.path.splitext(datoteka.filename)
     if form not in (".png", ".jpg", ".jpeg"):
         return bottle.redirect("/ni_slika")
     else:
-        dodaj_sliko(slika)
+        dodaj_sliko(datoteka)
 
 @bottle.route('/static/<style>')
 def css(style):
