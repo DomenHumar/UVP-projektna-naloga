@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="cell image">
-        <slika_html />
+        <{{slika}}/>
     </div>
     <div class="cell color">
         <div class="box" style="background-color:{{RGB_str}}"></div>

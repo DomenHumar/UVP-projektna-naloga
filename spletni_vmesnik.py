@@ -16,7 +16,7 @@ def nalozi_sliko():
     datoteka = bottle.request.files["slika"]
     # Preverimo če je podana datoteka slika (tako da pogledamo njen format)
     ime, form = os.path.splitext(datoteka.filename)
-    if form not in (".png", ".jpg", ".jpeg"):
+    if form not in (".png", ".jpg", ".jpeg", ".PNG", ".JPG", ".JPEG"):
         return bottle.redirect("/ni_slika")
     else:
         # Pillow ne deluje na FileUpload, ki nam ga poda Bottle zato rabimo io
@@ -28,7 +28,8 @@ def nalozi_sliko():
         return bottle.template(
             "je_slika.tpl",
             RGB_str=RGB_str,
-            HEX_str=HEX_str
+            HEX_str=HEX_str,
+            slika=slika
         )
 
 @bottle.route('/static/<style>')
