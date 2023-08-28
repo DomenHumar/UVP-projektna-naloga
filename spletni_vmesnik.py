@@ -1,7 +1,7 @@
 import bottle
 import os
 import io
-from program import dodaj_sliko
+from program import najdi_RGB
 
 @bottle.get("/")
 def stran():
@@ -11,7 +11,7 @@ def stran():
 def napacen_input():
     return bottle.template("ni_slika.tpl")
 
-@bottle.post('/nalozi_sliko')
+@bottle.post('/je_slika')
 def nalozi_sliko():
     datoteka = bottle.request.files["slika"]
     ime, form = os.path.splitext(datoteka.filename)
@@ -21,7 +21,15 @@ def nalozi_sliko():
         # Pillow ne deluje na FileUpload, ki nam ga poda Bottle
         slika = io.BytesIO()
         datoteka.save(slika)
-        return dodaj_sliko(slika)
+        RGB = najdi_RGB(slika)
+        RGB_str='rgb({}, {}, {})'.format(RGB[0], RGB[1], RGB[2])
+        HEX_str = '#{:02x}{:02x}{:02x}'.format(RGB[0], RGB[1], RGB[2])
+        return bottle.template(
+            "je_slika.tpl",
+            RGB_str=RGB_str,
+            HEX_str=HEX_str,
+            slika=slika
+        )
 
 @bottle.route('/static/<style>')
 def css(style):
