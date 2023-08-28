@@ -41,4 +41,4 @@ def nalozi_sliko():
 def css(style):
     return bottle.static_file(style, root='./static/')
 
-bottle.run(reloader=True, debug=True)
+bottle.run(reloader=True, debug=False)
