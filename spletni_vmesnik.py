@@ -1,6 +1,7 @@
 import bottle
 import os
 import io
+import base64
 from program import najdi_RGB
 
 @bottle.get("/")
@@ -25,11 +26,15 @@ def nalozi_sliko():
         RGB = najdi_RGB(slika)
         RGB_str='rgb({}, {}, {})'.format(RGB[0], RGB[1], RGB[2])
         HEX_str = '#{:02x}{:02x}{:02x}'.format(RGB[0], RGB[1], RGB[2])
+        # naš io.BytesIO objekt pretvorimo z base64, da ga lahko podamo HTML-u
+        data = slika.getvalue()
+        data = base64.b64encode(data)
+        data = data.decode()
         return bottle.template(
             "je_slika.tpl",
             RGB_str=RGB_str,
             HEX_str=HEX_str,
-            slika=slika
+            data=data
         )
 
 @bottle.route('/static/<style>')
