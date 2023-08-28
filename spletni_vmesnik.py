@@ -1,5 +1,6 @@
 import bottle
 import os
+import io
 from program import dodaj_sliko
 
 @bottle.get("/")
@@ -17,7 +18,10 @@ def nalozi_sliko():
     if form not in (".png", ".jpg", ".jpeg"):
         return bottle.redirect("/ni_slika")
     else:
-        dodaj_sliko(datoteka)
+        # Pillow ne deluje na FileUpload, ki nam ga poda Bottle
+        slika = io.BytesIO()
+        datoteka.save(slika)
+        return dodaj_sliko(slika)
 
 @bottle.route('/static/<style>')
 def css(style):

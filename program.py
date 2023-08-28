@@ -14,7 +14,16 @@ def dodaj_sliko(file):
               '</div>' \
               '</div>'
     slika = Image.open(file)
-    RGB = najdi_povprecno_barvo(slika)
+    RGB = []
+    piksle = slika.load()
+    for k in range(3):
+        sumacija = 0
+        for j in range(slika.size[1]):
+            for i in range(slika.size[0]):
+                sumacija += piksle[i,j][k]
+            povprecje = round(sumacija / (slika.size[0] * slika.size[1]))
+        RGB.append(povprecje)
+    return RGB
     RGB_str = 'rgb({}, {}, {})'.format(RGB[0], RGB[1], RGB[2])
     HEX_str = '#{0:02x}{1:02x}{2:02x}'.format(RGB[0], RGB[1], RGB[2])
     box = '<div class="box" style="background-color: {}"></div>'.format(RGB_str)
@@ -24,14 +33,3 @@ def dodaj_sliko(file):
     element = element.replace('<li class="RGB"></li>', RGB_li)
     element = element.replace('<li class="HEX"></li>', HEX_li)
     return element
-
-def najdi_povprecno_barvo(slika):
-    RGB_povprecne_barve = []
-    for k in range(3):
-        sumacija = 0
-        for j in range(slika.size[1]):
-            for i in range(slika.size[0]):
-                sumacija += piksle[i,j][k]
-            povprecje = round(sumacija / (slika.size[0] * slika.size[1]))
-        RGB_povprecne_barve.append(povprecje)
-    return RGB_povprecne_barve
